@@ -367,7 +367,7 @@ public class calculadora extends javax.swing.JFrame {
             visualizador.setText(armazenamento);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
-
+ 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         visualizador.setText(visualizador.getText() + "4");
     }//GEN-LAST:event_jButton12ActionPerformed
