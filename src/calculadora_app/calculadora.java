@@ -17,6 +17,36 @@ public class calculadora extends javax.swing.JFrame {
 
     public calculadora() {
         initComponents();
+
+        visualizador.setEditable(false);
+        visualizador.addKeyListener(new java.awt.event.KeyAdapter() {
+            @Override
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                char c = evt.getKeyChar();
+
+                if (Character.isDigit(c)) {
+                    visualizador.setText(visualizador.getText() + c);
+                } else if (c == '.') {
+                    jButton19ActionPerformed(null);
+                } else if (c == '+') {
+                    jButton1ActionPerformed(null);
+                } else if (c == '-') {
+                    jButton8ActionPerformed(null);
+                } else if (c == '*') {
+                    jButton9ActionPerformed(null);
+                } else if (c == '/') {
+                    jButton13ActionPerformed(null);
+                } else if (c == '=' || evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+                    jButton18ActionPerformed(null);
+                } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_BACK_SPACE) {
+                    jButton3ActionPerformed(null);
+
+                } else if (c == 'c' || c == 'C') {
+                    jButton2ActionPerformed(null);
+                }
+            }
+        });
+        visualizador.requestFocusInWindow();
     }
 
     public void operacoes_aritmeticas() {
@@ -78,6 +108,7 @@ public class calculadora extends javax.swing.JFrame {
         jButton19 = new javax.swing.JButton();
         jButton20 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         jButton4.setText("+");
 
@@ -213,6 +244,11 @@ public class calculadora extends javax.swing.JFrame {
                 jButton16ActionPerformed(evt);
             }
         });
+        jButton16.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton16KeyPressed(evt);
+            }
+        });
 
         jButton18.setFont(new java.awt.Font("Consolas", 1, 24)); // NOI18N
         jButton18.setText("=");
@@ -237,8 +273,16 @@ public class calculadora extends javax.swing.JFrame {
                 jButton20ActionPerformed(evt);
             }
         });
+        jButton20.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jButton20KeyPressed(evt);
+            }
+        });
 
         jLabel1.setForeground(new java.awt.Color(102, 102, 102));
+
+        jLabel2.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel2.setText("jLabel2");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -295,14 +339,18 @@ public class calculadora extends javax.swing.JFrame {
                         .addComponent(visualizador))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(71, Short.MAX_VALUE)
+                .addContainerGap(49, Short.MAX_VALUE)
                 .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(visualizador, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
@@ -352,7 +400,7 @@ public class calculadora extends javax.swing.JFrame {
 
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        visualizador.setText("7");
+        visualizador.setText(visualizador.getText() + "7");
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
@@ -367,92 +415,105 @@ public class calculadora extends javax.swing.JFrame {
             visualizador.setText(armazenamento);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
- 
+
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-        visualizador.setText(visualizador.getText() + "4");
+        visualizador.setText(visualizador.getText() + " 4 ");
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        visualizador.setText(visualizador.getText() + "1");
+        visualizador.setText(visualizador.getText() + " 1 ");
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton20ActionPerformed
-        visualizador.setText(visualizador.getText() + "0");
+        visualizador.setText(visualizador.getText() + " 0 ");
     }//GEN-LAST:event_jButton20ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        visualizador.setText(visualizador.getText() + "2");
+        visualizador.setText(visualizador.getText() + " 2 ");
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        visualizador.setText(visualizador.getText() + "3");
+        visualizador.setText(visualizador.getText() + " 3 ");
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-        visualizador.setText(visualizador.getText() + "5");
+        visualizador.setText(visualizador.getText() + " 5 ");
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        visualizador.setText(visualizador.getText() + "6");
+        visualizador.setText(visualizador.getText() + " 6 ");
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        visualizador.setText(visualizador.getText() + "8");
+        visualizador.setText(visualizador.getText() + " 8 ");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        visualizador.setText(visualizador.getText() + "9");
+        visualizador.setText(visualizador.getText() + " 9 ");
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-        visualizador.setText(visualizador.getText() + ".");
+        visualizador.setText(visualizador.getText() + " . ");
     }//GEN-LAST:event_jButton19ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        resultado = Double.parseDouble(visualizador.getText());
+        numero = Double.parseDouble(visualizador.getText());
         calcular = 4;
         visualizador.setText("");
-        jLabel1.setText(numero + "/");
+        jLabel2.setText(numero + " / ");
         //visualizador.setText(visualizador.getText() + "/");
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        resultado = Double.parseDouble(visualizador.getText());
+        numero = Double.parseDouble(visualizador.getText());
         calcular = 3;
         visualizador.setText("");
-        jLabel1.setText(numero + "*");
+        jLabel2.setText(numero + " * ");
         //visualizador.setText(visualizador.getText() + "*");
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        resultado = Double.parseDouble(visualizador.getText());
+        numero = Double.parseDouble(visualizador.getText());
         calcular = 2;
         visualizador.setText("");
-        jLabel1.setText(numero + "-");
+        jLabel2.setText(numero + " - ");
         //visualizador.setText(visualizador.getText() + "-");
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        resultado = Double.parseDouble(visualizador.getText());
+        numero = Double.parseDouble(visualizador.getText());
         calcular = 1;
         visualizador.setText("");
-        jLabel1.setText(numero + "+");
+        jLabel2.setText(numero + " + ");
         //visualizador.setText(visualizador.getText() + "+");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        visualizador.setText(""); // C
+        visualizador.setText(" "); // C
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         operacoes_aritmeticas();
-        jLabel1.setText("");
+        jLabel1.setText(" ");
         //
     }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton16KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton16KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton16KeyPressed
+
+    private void jButton20KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jButton20KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton20KeyPressed
 
     /**
      * @param args the command line arguments
      */
+    
+    public void focarCampo(){
+        visualizador.requestFocusInWindow(); //foco no campo ao abrir
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -480,7 +541,9 @@ public class calculadora extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new calculadora().setVisible(true);
+                calculadora janela = new calculadora();
+                janela.setVisible(true);
+                janela.focarCampo();
             }
         });
     }
@@ -506,6 +569,7 @@ public class calculadora extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField visualizador;
     // End of variables declaration//GEN-END:variables
